@@ -1,42 +1,35 @@
-package ticket.management.backend.entity;
+package ticket.management.backend.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import ticket.management.backend.entity.enums.Category;
 import ticket.management.backend.entity.enums.Priority;
-import ticket.management.backend.entity.enums.Status;
 
 import java.time.Instant;
 
-@Entity
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
-@Table(name = "ticket")
-public class Ticket {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class TicketDTO {
     @NotBlank(message = "Title cannot be blank or null")
     private String title;
 
-    @NotBlank(message = "Desscription cannot be blank or null")
+    @NotBlank(message = "Description cannot be blank or null")
     private String description;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
     private Instant creationDate;
 
-    private Boolean deleted;
-
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    @NotNull(message = "Category cannot be null")
     @Enumerated(EnumType.STRING)
     private Category category;
+    @NotNull(message = "Priority cannot be null")
     @Enumerated(EnumType.STRING)
     private Priority priority;
 }
