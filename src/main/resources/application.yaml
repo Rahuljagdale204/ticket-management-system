@@ -24,3 +24,11 @@ spring:
 spring doc:
   api-docs:
     path: /api-docs
+
+ai:
+  gemini:
+    api-key: ${GEMINI_API_KEY:}
+    model: gemini-2.5-flash
+    base-url: https://generativelanguage.googleapis.com/v1beta/models
+    enabled: true
+    timeout-seconds: 15
