@@ -15,7 +15,6 @@ import java.time.Instant;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class TicketDTO {
     @NotBlank(message = "Title cannot be blank or null")
     private String title;

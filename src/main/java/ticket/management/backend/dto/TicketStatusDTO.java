@@ -8,7 +8,6 @@ import ticket.management.backend.entity.enums.Status;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class TicketStatusDTO {
 
     @NotNull(message = "Status cannot be null")
